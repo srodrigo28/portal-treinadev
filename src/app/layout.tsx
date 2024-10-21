@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +39,106 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} 
+          antialiased flex flex-col items-center h-screen pt-16 `}
       >
+        <nav className="flex justify-between w-screen px-20 mb-10">
+          <Link href="/">
+            <div className="logo p-3 text-white text-3xl cursor-pointer">
+              Treina
+              <span className="text-white rounded-md bg-red-600 p-3 text-3xl">
+                DEV
+              </span>
+            </div>
+          </Link>
+
+          <div className="nav-item flex gap-3">
+            <Link href="">
+              <button className="bg-slate-700 p-4 rounded-md hover:border-2 ">
+                Planos
+              </button>{" "}
+            </Link>
+            <Link href="">
+              <button className="bg-slate-700 p-4 rounded-md hover:border-2">
+                Projetos
+              </button>{" "}
+            </Link>
+            <Link href="">
+              <button className="bg-slate-700 p-4 rounded-md hover:border-2">
+                DevStack
+              </button>{" "}
+            </Link>
+            <Link href="">
+              <button className="bg-slate-700 p-4 rounded-md hover:border-2">
+                Novidades
+              </button>{" "}
+            </Link>
+          </div>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="bg-red-600 p-5 h-14 w-24 rounded-md hover:border-2 hover:bg-emerald-500 ">
+                Login
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px] bg-slate-900 border-none">
+              <DialogHeader>
+                <header className="flex justify-between p-3 items-center">
+                  <DialogTitle>
+                    <div className="logo p-3 text-white text-3xl cursor-pointer">
+                      Treina
+                      <span className="text-white rounded-md bg-red-600 p-3 text-3xl">
+                        DEV
+                      </span>
+                    </div>
+                  </DialogTitle>
+                  <DialogClose asChild>
+                  </DialogClose>
+                </header>
+                <DialogDescription className="text-3xl text-white">Seja bem vindo</DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right text-white">
+                    E-mail
+                  </Label>
+                  <Input
+                    id="name"
+                    defaultValue="Pedro Duarte"
+                    className="col-span-3 text-white"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right text-white">
+                    Senha
+                  </Label>
+                  <Input
+                    type="password"
+                    id="username"
+                    defaultValue="@peduarte"
+                    className="col-span-3 text-white"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button type="submit" className="bg-emerald-600">
+                    Entrar
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </nav>
+
         {children}
+
+        <button className="contato">Contato</button>
+        <footer>
+          <h1>Não deixe de se escrever</h1>
+        </footer>
       </body>
     </html>
   );
