@@ -4,13 +4,13 @@ export default function Home() {
   return (
     <div className="home-page">
 
-      <header className="flex items-center gap-5 justify-center mb-5">
+      <header className="flex items-center gap-5 justify-center mb-10">
         <h1 className="header-home text-white text-2xl">Confira nossos </h1>
         <div className="bg-green-500 p-3 rounded-md text-white font-bold ">Conteúdos Grátis</div>
       </header>
       
 
-      <section className=" video flex gap-5 items-center justify-center flex-wrap mb-10">
+      <section className=" video flex gap-5 items-center justify-center flex-wrap mb-12">
         <div className="card">
           <header className="bg-green-600 p-3 rounded-t-md text-center font-bold text-2xl"> Layouts Lindos HTML CSS3 </header>
           <iframe width={widthVideo} height={heightVideo} src="https://www.youtube.com/embed/xkPp1xIRNc0?si=eSbL6Rcv2-xKnV7y" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
